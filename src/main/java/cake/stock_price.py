@@ -6,10 +6,17 @@ def get_max_profit(stock_prices_yesterday):
     i = 0; j = alen - 1
     min_on_left = stock_prices_yesterday[0]
     max_on_right = stock_prices_yesterday[-1]
+    max_idx = alen - 1
+    min_idx = 0
+    while i < alen and max_idx > min_idx:
+        if stock_prices_yesterday[i] < min_on_left:
+            min_on_left = stock_prices_yesterday[i]
+            min_idx = i
 
-    while i < alen and j > i:
-        min_on_left = min(min_on_left, stock_prices_yesterday[i])
-        max_on_right = max(max_on_right, stock_prices_yesterday[j])
+        if stock_prices_yesterday[j] > max_on_right:
+            max_on_right = stock_prices_yesterday[j]
+            max_idx = j
+
         i += 1
         j -= 1
 
