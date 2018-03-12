@@ -242,3 +242,7 @@ hs_err_pid*
 .DS_Store
 .idea/
 
+# custom 
+\._*.*
+\._\.*
+\._*

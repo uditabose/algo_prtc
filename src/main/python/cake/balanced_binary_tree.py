@@ -15,6 +15,13 @@ class BinaryTreeNode:
         return self.right
 
 
+    def is_balanced(self):
+        min_depth = 0
+        max_depth = 0
+
+        
+
+
 
 class BalancedBinaryTree(BinaryTreeNode):
     def __init__(self):
