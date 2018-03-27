@@ -1,6 +1,6 @@
 def is_rotated_substring(astr, bstr):
     '''
-    1.9 is one string rotated substring of other
+    1.9 is one string rotated substring of other, O(N)
     '''
     big_string = "%s%s" % (bstr, bstr)
     return (astr in big_string)

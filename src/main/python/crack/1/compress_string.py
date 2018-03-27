@@ -1,7 +1,7 @@
 
 def compress_string(astr):
     '''
-    1.6 compress the string
+    1.6 compress the string, O(N)
     '''
     old_char = astr[0]
     count = 0
