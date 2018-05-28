@@ -69,6 +69,18 @@ class Stack (object):
     def empty(self):
         return (self.head == None)
 
+    def length(self):
+        if self.head == None:
+            return 0
+
+        curr = self.head
+        ret_len = 0
+        while curr != None:
+            ret_len += 1
+            curr = curr.next
+
+        return ret_len
+
     def __repr__(self):
         return self.__str__()
 

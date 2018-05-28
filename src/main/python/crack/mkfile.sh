@@ -18,6 +18,9 @@ cat >> "$1/$2.py" <<EOF
 def $2():
     '''
 
+    Time :
+    Space:
+    Note :
     '''
     pass
 
