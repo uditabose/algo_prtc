@@ -4,17 +4,6 @@ sys.path.append('./ds/')
 
 from stack_queue import Node, Stack 
 
-def stack_min():
-    '''
-    3.2 Design a stack with an additional function
-    `min` that returns minimum value of the stack at O(1)
-
-    Time :
-    Space:
-    Note :
-    '''
-    pass
-
 class StackMin(Stack):
     '''
     3.2 Design a stack with an additional function
