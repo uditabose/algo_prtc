@@ -6,6 +6,7 @@ from linked_list import LinkedList
 def sum_list_reverse(num1, num2):
     '''
     2.5 sum up two list, reversed input, O(N)
+    https://leetcode.com/problems/add-two-numbers/description/
     '''
     summed = LinkedList()
     carry = 0
