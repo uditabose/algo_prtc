@@ -9,7 +9,7 @@ class ListNode(object):
         curr = self
         while curr != None:
             lstr += str(curr.val)
-            lstr += " "
+            lstr += " > "
             curr = curr.next
 
         return lstr
