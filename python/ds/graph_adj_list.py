@@ -26,10 +26,15 @@ class GraphAL(object):
     adjacency list representation of graph
     """
     def __init__(self):
-        self.adj_list = defaultdict(list)
-        self.vertices = {}
+        self.adj_list = defaultdict(list) # adjacency list
+        self.vertices = {} # vertices
 
     def add_edge(self, from_val, to_val=None):
+        '''
+        adds both values as vertices to vertices array
+        and adds an edge if both from and to values are not 
+        null
+        '''
         if from_val == None:
             return
 
