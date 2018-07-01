@@ -23,31 +23,32 @@ def reverse_vowels_of_a_string(astr):
     3. stop and swap if both are vowels, then move both
     4. repeat till left < right
     '''
-    if astr == None or len(astr) == 0:
+    if astr == None or len(astr.strip()) < 2:
         return astr
 
     left = 0
     right = len(astr) - 1
     reversed_astr = [''] * len(astr)
-
-    consonants = 'bcdfghjklmnpqrstvwxyz'
-    vowels = 'aeiou'
+    vowels = 'aeiouAEIOU'
 
     while left < right:
-        if astr[left] in consonants:
-            reversed_astr.insert(left, astr[left])
-            left += 1
-
-        if astr[right] in consonants:
-            reversed_astr.insert(right, astr[right])
-            right -= 1
-
         if astr[left] in vowels and astr[right] in vowels:
             reversed_astr.insert(right, astr[left])
             reversed_astr.insert(left, astr[right])
             left += 1
             right -= 1
+            continue
 
+        if not astr[left] in vowels:
+            reversed_astr.insert(left, astr[left])
+            left += 1
+
+        if not astr[right] in vowels:
+            reversed_astr.insert(right, astr[right])
+            right -= 1
+
+    if left == right:
+        reversed_astr.insert(right, astr[right])
     return "".join(reversed_astr)
 
 def run():
@@ -55,6 +56,7 @@ def run():
     # holle
     print(reverse_vowels_of_a_string("leetcode"))
     # leotcede
+    print(reverse_vowels_of_a_string("a."))
 
     '''
     holle
