@@ -1,7 +1,9 @@
 #!/bin/bash
 
 if [[ $# -lt 2 ]]; then
-    echo 'Usage : ./mkfile.sh dir_name file_name'
+    echo 'usage : '
+    echo '       ./mkfile.sh dir_name [file_name]'
+    echo '       ./mkfile.sh dir_name [url]'
     exit -1
 fi
 
@@ -9,14 +11,24 @@ if [[ ! -d "$1" ]]; then
     mkdir "$1"
 fi
 
-if [[ -f "$1/$2.py" ]]; then
-    rm "$1/$2.py"
+f_url="$2"
+f_name="$f_url"
+if [[ "$f_name" =~ ^http ]]; then
+    f_name=$(echo "$f_name" | cut -f 5 -d '/')
+    f_name=$(echo "$f_name" | sed 's/-/_/g')
 fi
 
-cat >> "$1/$2.py" <<EOF
+if [[ -f "$1/$f_name.py" ]]; then
+    rm "$1/$f_name.py"
+fi
 
-def $2():
+cat >> "$1/$f_name.py" <<EOF
+#!/usr/local/bin/python3
+
+def $f_name():
     '''
+    
+    $f_url
 
     Time :
     Space:
@@ -31,3 +43,5 @@ if __name__ == '__main__':
     run()
 
 EOF
+
+chmod +x "$1/$f_name.py"
