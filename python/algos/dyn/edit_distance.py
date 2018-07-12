@@ -5,7 +5,8 @@ def edit_distance(astr, bstr):
     if bstr == None or len(bstr) == 0:
         return 0
 
-    edit_matrix = [[0] * len(astr) for n in range(len(bstr))]
+    edit_matrix = [[0] * len(bstr) for n in range(len(astr))]
+    #print(edit_matrix)
 
     for i in range(0, len(astr)):
         for j in range(0, len(bstr)):
@@ -18,8 +19,9 @@ def edit_distance(astr, bstr):
             else:
                 edit_matrix[i][j] = 1 + min(edit_matrix[i-1][j-1], edit_matrix[i-1][j] , edit_matrix[i][j-1] )
                 
-    return edit_matrix[len(astr-1)][len(bstr-1)]
+    return edit_matrix[len(astr)-1][len(bstr)-1]
 
 if __name__ == '__main__':
     print(edit_distance('snowy', 'sunny'))
     print(edit_distance('potential', 'exponential'))
+    print(edit_distance('geek', 'gesek'))
