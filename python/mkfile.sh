@@ -26,18 +26,19 @@ cat >> "$1/$f_name.py" <<EOF
 #!/usr/local/bin/python3
 
 def $f_name():
-    '''
-    
+    """
     $f_url
 
     Time :
     Space:
     Note :
-    '''
+    """
     pass
+
 
 def run():
     pass
+
 
 if __name__ == '__main__':
     run()
