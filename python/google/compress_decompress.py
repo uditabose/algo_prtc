@@ -2,8 +2,8 @@
 def compress_decompress(compressed_str):
     '''
     In this exercise, you're going to decompress a compressed string.
-    Your input is a compressed string of the format number[string] 
-    and the decompressed output form should be the string written 
+    Your input is a compressed string of the format number[string]
+    and the decompressed output form should be the string written
     number times. For example:
 
     The input
@@ -13,11 +13,11 @@ def compress_decompress(compressed_str):
     abcabcabcababababc
 
     Other rules
-    Number can have more than one digit. For example, 
+    Number can have more than one digit. For example,
     10[a] is allowed, and just means aaaaaaaaaa
-    One repetition can occur inside another. 
+    One repetition can occur inside another.
     For example, 2[3[a]b] decompresses into aaabaaab
-    Characters allowed as input include digits, small 
+    Characters allowed as input include digits, small
     English letters and brackets [ ].
     Digits are only to represent amount of repetitions.
     Letters are just letters.
@@ -30,7 +30,7 @@ def compress_decompress(compressed_str):
     Space: O(N)
     Note :
     '''
-    
+
     rp_stack = []
     wd_stack = []
     fin_str = ""
@@ -101,4 +101,3 @@ def run():
 
 if __name__ == '__main__':
     run()
-
