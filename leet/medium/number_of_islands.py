@@ -1,6 +1,6 @@
 #!/usr/local/bin/python3
 
-def validate_neighbor(i, j, grid):
+def valid_neighbor(i, j, grid):
     if i < 0 or j < 0:
         return None
     if i >= len(grid):
@@ -9,6 +9,60 @@ def validate_neighbor(i, j, grid):
         return None
 
     return (i, j)
+
+def get_node(node, grid):
+    if node != None:
+        return grid[node[0]][node[1]]
+
+def get_node_visit(node, grid_visit):
+    if node != None:
+        return grid_visit[node[0]][node[1]]
+    return False
+
+def add_to_islands(node, island_queue, grid, grid_visit):
+    if get_node(node, grid) == "1" and get_node_visit(node, grid_visit) == False:
+        island_queue.append(node)
+
+def is_islan_end(nodes, grid):
+    node_ns = [get_node(node, grid) for node in nodes]
+    return False if "1" in node_ns else True
+
+def find_island(node, grid, grid_visit):
+    print("find_island : ", node)
+    if get_node_visit(node, grid_visit):
+        return 0
+
+    if get_node(node, grid) != "1":
+        return 0
+
+    island_queue = []
+    island_queue.append(node)
+    island_size = 0
+
+    while len(island_queue) > 0:
+        island_size += 1
+        a_node = island_queue.pop()
+        x = a_node[0]
+        y = a_node[1]
+        grid_visit[x][y] = True
+
+        top = valid_neighbor(x - 1, y, grid)
+        bottom = valid_neighbor(x + 1, y, grid)
+        left = valid_neighbor(x, y - 1, grid)
+        right = valid_neighbor(x, y + 1, grid)
+
+        islan_end = is_islan_end([top, bottom, left, right], grid)
+
+        if islan_end:
+            break
+
+        add_to_islands(top, island_queue, grid, grid_visit)
+        add_to_islands(bottom, island_queue, grid, grid_visit)
+        add_to_islands(left, island_queue, grid, grid_visit)
+        add_to_islands(right, island_queue, grid, grid_visit)
+
+    return 1 if island_size > 0 else 0
+
 
 def number_of_islands(grid):
     """
@@ -24,51 +78,9 @@ def number_of_islands(grid):
 
     for i, row in enumerate(grid):
         for j, what in enumerate(grid[i]):
-            if grid_visit[i][j]:
-                continue
-            grid_visit[i][j] = True
+            island_count += find_island((i, j), grid, grid_visit)
 
-            top = validate_neighbor(i - 1, j, grid)
-            bottom = validate_neighbor(i + 1, j, grid)
-            left = validate_neighbor(i, j - 1, grid)
-            right = validate_neighbor(i, j + 1, grid)
-
-            if int(what) == 1:
-                island_queue.append((i, j))
-
-                top_n = bottom_n = left_n = right_n = None
-                if top != None:
-                    top_n = grid[top[0]][top[1]]
-
-                if bottom != None:
-                    bottom_n = grid[bottom[0]][bottom[1]]
-
-                if left != None:
-                    left_n = grid[left[0]][left[1]]
-
-                if right != None:
-                    right_n = grid[right[0]][right[1]]
-
-                print(top_n, bottom_n, left_n, right_n)
-                if top_n != "1" and bottom != "1" and left != "1" and right != "1":
-                    island_count += 1
-                    print(island_queue)
-                    island_queue.clear()
-
-                if bottom_n == 1:
-                    island_queue.append(bottom)
-
-                if left_n == 1:
-                    island_queue.append(left)
-
-                if left_n == 1:
-                    island_queue.append(left)
-
-                if right_n == 1:
-                    island_queue.append(right)
-
-    print(island_count)
-
+    return island_count
 
 def run():
     # grid = [
@@ -77,13 +89,19 @@ def run():
     #             ["1","1","0","0","0"],
     #             ["0","0","0","0","0"]
     #         ]
-    grid = [
-                ["1","1","0","0","0"],
-                ["1","1","0","0","0"],
-                ["0","0","1","0","0"],
-                ["0","0","0","1","1"]
-            ]
-    number_of_islands(grid)
+    # grid = [
+    #             ["1","1","0","0","0"],
+    #             ["1","1","0","0","0"],
+    #             ["0","0","1","0","0"],
+    #             ["0","0","0","1","1"]
+    #         ]
+    # grid = [
+    #             ["1","1","0","0","0"],
+    #             ["1","1","0","0","0"],
+    #             ["0","0","0","0","0"],
+    #             ["0","0","0","0","1"]
+    #         ]
+    print("islands ", number_of_islands(grid))
 
 
 if __name__ == '__main__':
