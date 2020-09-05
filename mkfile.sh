@@ -14,7 +14,8 @@ fi
 f_url="$2"
 f_name="$f_url"
 if [[ "$f_name" =~ ^http ]]; then
-    f_name=$(echo "$f_name" | cut -f 5 -d '/')
+    my_array=($(echo $f_name | tr "/" "\n"))
+    f_name="${my_array[@]: -1:1}"
     f_name=$(echo "$f_name" | sed 's/-/_/g')
 fi
 
