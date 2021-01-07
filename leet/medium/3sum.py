@@ -2,6 +2,7 @@
 
 from typing import List
 
+
 def three_sum_brute(nums: List[int]) -> List[List[int]]:
     zero_sum = set()
     for i in range(0, len(nums) - 2):
@@ -12,21 +13,27 @@ def three_sum_brute(nums: List[int]) -> List[List[int]]:
 
     return list(zero_sum)
 
+
 def two_sum(nums, exclude, target):
     num_set = set(nums)
     for i in range(0, len(nums)):
-        
+        if i == exclude:
+            continue
+        if target - nums[i] in num_set:
+            return (nums[i], target - nums[i])
 
 
 def three_sum_memo(nums: List[int]) -> List[List[int]]:
 
-    two_sum_dict = {}
-
+    three_sum = set()
     for i in range(0, len(nums) - 2):
+        ts = two_sum(nums, i, (-1) * nums[i])
+        three_sum.add((nums[i], ts[0], ts[1]))
+
+    return list(three_sum)
 
 
-
-def three_sum(nums: List[int]) -> List[List[int]]:
+def run():
     """
     https://leetcode.com/problems/3sum/
 
@@ -34,18 +41,18 @@ def three_sum(nums: List[int]) -> List[List[int]]:
     Space:
     Note :
     """
-    if len(nums) < 3:
-        return []
-
-    return three_sum_brute(nums)
-
-
-def run():
-    print(three_sum([-1,0,1,2,-1,-4]))
+    print(three_sum_brute([-1, 0, 1, 2, -1, -4]))
     print("--------------")
-    print(three_sum([]))
+    print(three_sum_brute([]))
     print("--------------")
-    print(three_sum([0]))
+    print(three_sum_brute([0]))
+    print("--------------")
+    print("===============")
+    print(three_sum_memo([-1, 0, 1, 2, -1, -4]))
+    print("--------------")
+    print(three_sum_memo([]))
+    print("--------------")
+    print(three_sum_memo([0]))
     print("--------------")
 
 
