@@ -63,7 +63,22 @@ class CountSubstring(Dynamic):
         return memo[start][end]
 
     def bottomup(self):
-        pass
+        slen = len(self.string)
+        table = [[False for _ in range(slen)] for _ in range(slen)]
+
+        palin_count = 0
+        for i in range(slen):
+            table[i][i] = True
+            palin_count += 1
+
+        for start in range(slen - 1, -1, -1):
+            for end in range(start + 1, slen):
+                if self.string[start] == self.string[end]:
+                    if end - start == 1 or table[start + 1][end - 1]:
+                        table[start][end] = True
+                        palin_count += 1
+
+        return palin_count
 
 
 if __name__ == '__main__':
