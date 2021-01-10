@@ -10,9 +10,10 @@ def make_power_set(num, power_set):
 
     power_set.extend(new_elems)
 
+
 def subsets(num_arr):
-    '''
-    Given a set of distinct integers, nums, return 
+    """
+    Given a set of distinct integers, nums, return
     all possible subsets (the power set).
 
     Note: The solution set must not contain duplicate subsets.
@@ -36,8 +37,8 @@ def subsets(num_arr):
     Time :
     Space:
     Note :
-    1. 
-    '''
+    1.
+    """
     if not num_arr:
         return []
 
@@ -50,12 +51,13 @@ def subsets(num_arr):
         make_power_set(num, power_set)
     return power_set
 
+
 def run():
     print(subsets([1]))
-    print(subsets([1,2]))
-    print(subsets([1,2,3]))
-    print(subsets([1,2,3,4]))
+    print(subsets([1, 2]))
+    print(subsets([1, 2, 3]))
+    print(subsets([1, 2, 3, 4]))
+
 
 if __name__ == '__main__':
     run()
-

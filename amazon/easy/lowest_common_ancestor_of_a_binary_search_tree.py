@@ -2,21 +2,22 @@
 
 import os
 import sys
-ds_path = "/Users/papa/spaces/workspace/AlgoPractice/python/ds/"
+ds_path = "/Users/papa/spaces/workspace/algo_prtc/basic/ds/"
+# ds_path = "/Users/papa/spaces/workspace/AlgoPractice/python/ds/"
 sys.path.append(ds_path)
 
 from tree import *
 
-def lowest_common_ancestor_of_a_binary_search_tree(tree, one, two):
-    '''
 
-    Given a binary search tree (BST), find the lowest 
+def lowest_common_ancestor_of_a_binary_search_tree(tree, one, two):
+    """
+    Given a binary search tree (BST), find the lowest
     common ancestor (LCA) of two given nodes in the BST.
 
-    According to the definition of LCA on Wikipedia: 
-    “The lowest common ancestor is defined between two 
-    nodes p and q as the lowest node in T that has both 
-    p and q as descendants (where we allow a node to be a 
+    According to the definition of LCA on Wikipedia:
+    “The lowest common ancestor is defined between two
+    nodes p and q as the lowest node in T that has both
+    p and q as descendants (where we allow a node to be a
     descendant of itself).”
 
     Given binary search tree:  root = [6,2,8,0,4,7,9,null,null,3,5]
@@ -37,13 +38,13 @@ def lowest_common_ancestor_of_a_binary_search_tree(tree, one, two):
 
     Input: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 4
     Output: 2
-    Explanation: The LCA of nodes 2 and 4 is 2, since a node can be a descendant of itself 
+    Explanation: The LCA of nodes 2 and 4 is 2, since a node can be a descendant of itself
                  according to the LCA definition.
     Note:
 
     All of the nodes' values will be unique.
     p and q are different and both values will exist in the BST.
-    
+
     https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/description/
 
     Time : O(N)
@@ -51,10 +52,10 @@ def lowest_common_ancestor_of_a_binary_search_tree(tree, one, two):
     Note :
     1. keep a path set
     2. pick one and traverse tree to find the path
-    3. then traverse for the second and find 
+    3. then traverse for the second and find
         the matching part of the traversed path
     4. last value in the matching path is the LCA
-    '''
+    """
     if not tree:
         return None
 
@@ -89,7 +90,8 @@ def lowest_common_ancestor_of_a_binary_search_tree(tree, one, two):
             break
 
     return lca
-        
+
+
 def run():
     '''
     tree = make_binary_tree([6,2,8,0,4,7,9,3,5])
@@ -105,4 +107,3 @@ def run():
 
 if __name__ == '__main__':
     run()
-

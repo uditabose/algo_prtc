@@ -5,11 +5,12 @@ class TreeNode:
         self.left = None
         self.right = None
 
+
 class BinarySearchTree(TreeNode):
     """ BinarySearchTree """
     def __init__(self, value):
         super(BinarySearchTree, self).__init__(value)
-    
+
     def add_node(self, value):
         curr = self
         prev = None
@@ -27,6 +28,7 @@ class BinarySearchTree(TreeNode):
         else:
             prev.right = node
 
+
 def make_bst(arr):
     if not arr:
         return None
@@ -35,6 +37,7 @@ def make_bst(arr):
     for v in arr[1:]:
         bst.add_node(v)
     return bst
+
 
 def sum_greater(tree, prev):
     if not tree or not tree.value:
@@ -49,13 +52,13 @@ def sum_greater(tree, prev):
         return prev.value + sum_greater(tree.right, tree)
     else:
         return sum_greater(tree.right, tree)
-    
+
 
 def convert_bst_to_greater_tree(tree):
-    '''
-    Given a Binary Search Tree (BST), convert it to a 
-    Greater Tree such that every key of the original BST 
-    is changed to the original key plus sum of all keys 
+    """
+    Given a Binary Search Tree (BST), convert it to a
+    Greater Tree such that every key of the original BST
+    is changed to the original key plus sum of all keys
     greater than the original key in BST.
 
     Example:
@@ -69,7 +72,7 @@ def convert_bst_to_greater_tree(tree):
                  18
                 /   \
               20     13
-    
+
     https://leetcode.com/problems/convert-bst-to-greater-tree/description/
 
     Time :
@@ -81,18 +84,19 @@ def convert_bst_to_greater_tree(tree):
 
     So, course of action -
     1. tackle right subtree of a node
-        a. add that to root 
-    2. go to the left, add 
+        a. add that to root
+    2. go to the left, add
 
-    '''
-    
+    """
+
     great_tree = []
     sum_greater(tree, None)
-    return great_tree
+    return tree
+
 
 def run():
-    print(convert_bst_to_greater_tree(make_bst([5,3,13,1,4,10,18])))
+    print(convert_bst_to_greater_tree(make_bst([5, 3, 13, 1, 4, 10, 18])))
+
 
 if __name__ == '__main__':
     run()
-
