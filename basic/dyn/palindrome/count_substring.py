@@ -7,12 +7,6 @@ class CountSubstring(Dynamic):
         self.string = string
 
     def bruteforce(self):
-        # print(CountSubstring.__is_palindrome__("a", 0, 0))
-        # print(CountSubstring.__is_palindrome__("aa", 0, 1))
-        # print(CountSubstring.__is_palindrome__("aaa", 0, 2))
-        # print(CountSubstring.__is_palindrome__("aba", 0, 2))
-        # print(CountSubstring.__is_palindrome__("abba", 0, 3))
-        # print(CountSubstring.__is_palindrome__("abca", 0, 3))
         return CountSubstring.__recurse__(self.string, 0, len(self.string) - 1)
 
     @staticmethod
@@ -82,4 +76,10 @@ class CountSubstring(Dynamic):
 
 
 if __name__ == '__main__':
+    # print(CountSubstring.__is_palindrome__("a", 0, 0))
+    # print(CountSubstring.__is_palindrome__("aa", 0, 1))
+    # print(CountSubstring.__is_palindrome__("aaa", 0, 2))
+    # print(CountSubstring.__is_palindrome__("aba", 0, 2))
+    # print(CountSubstring.__is_palindrome__("abba", 0, 3))
+    # print(CountSubstring.__is_palindrome__("abca", 0, 3))
     CountSubstring("abdbca").all_result()
