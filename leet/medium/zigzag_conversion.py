@@ -8,7 +8,14 @@ def zigzag_conversion(s: str, numRows: int) -> str:
     Space:
     Note :
     """
-    if len(s) == 1:
+    ret_arr = []
+    col = 0
+    row = 0
+    for c in s:
+        print("hello")
+        if len(ret_arr) == col:
+            ret_arr.append([])
+        if r < numRows:
 
 
 def run():
@@ -17,3 +24,4 @@ def run():
 
 if __name__ == '__main__':
     run()
+
